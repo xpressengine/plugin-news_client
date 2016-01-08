@@ -1,0 +1,22 @@
+div.title {
+	height: 200px;
+	color: #2389EE;
+	text-align: center;
+	margin: auto;
+	font-size: 30px;
+	padding: 200px;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 10px;
+}
+
+.alert-info {
+	background-color: #d9edf7 !important;
+	border-color: #bce8f1;
+}
+
+.alert-link {
+    font-weight: bold !important;
+}
