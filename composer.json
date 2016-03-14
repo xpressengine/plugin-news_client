@@ -5,7 +5,7 @@
     "xpressengine",
     "plugin"
   ],
-  "license": "LGPL-2.0",
+  "license": "LGPL",
   "version": "1.0.0",
   "type": "xpressengine-plugin",
   "support": {
@@ -13,9 +13,9 @@
   },
   "authors": [
     {
-      "name": "input your name",
-      "email": "input@your.email",
-      "homepage": "http://mysite.com",
+      "name": "XE Team",
+      "email": "developers@xpressengine.com",
+      "homepage": "http://xpressengine.io",
       "role": "Developer"
     }
   ],
@@ -28,6 +28,12 @@
           "class": "Xpressengine\\Plugins\\NewsClient\\NewsWidget",
           "name": "새소식 위젯",
           "description": "대시보드용 위젯 입니다.",
+          "screenshot" : []
+        },
+        "news_client/settingsSkin/news_client@default": {
+          "class": "Xpressengine\\Plugins\\NewsClient\\ManagerSkin",
+          "name": "관리자 스킨",
+          "description": "관리자 스킨 입니다.",
           "screenshot" : []
         }
       }

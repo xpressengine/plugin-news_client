@@ -3,7 +3,7 @@ namespace Xpressengine\Plugins\NewsClient;
 
 use Xpressengine\Widget\AbstractWidget;
 use View;
-use Frontend;
+use XeFrontend;
 
 class NewsWidget extends AbstractWidget
 {
@@ -47,7 +47,7 @@ class NewsWidget extends AbstractWidget
 
         $updatable = $this->needUpdate((array)$data->version);
 
-        Frontend::css($this->plugin->asset('assets/style.css'))->before('assets/settings/css/admin.css')->load();
+        XeFrontend::css($this->plugin->asset('assets/style.css'))->before('assets/settings/css/admin.css')->load();
 
         return View::make('news_client::views.widget', [
             'updatable' => $updatable,

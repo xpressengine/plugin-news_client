@@ -18,7 +18,6 @@ class Plugin extends AbstractPlugin
     public function boot()
     {
         // implement code
-
         $this->route();
 
         $register = app('xe.pluginRegister');
@@ -31,34 +30,10 @@ class Plugin extends AbstractPlugin
 
     protected function route()
     {
-        // implement code
-
-//        Route::fixed(
-//            $this->getId(),
-//            function () {
-//                Route::get(
-//                    '/',
-//                    [
-//                        'as' => 'news_client::index',
-//                        'uses' => function (Request $request) {
-//
-//                            $title = 'News_Client';
-//
-//                            // set browser title
-//                            Frontend::title($title);
-//
-//                            // load css file
-//                            Frontend::css($this->asset('assets/style.css'))->load();
-//
-//                            // output
-//                            return Presenter::make('news_client::views.index', ['title' => $title]);
-//
-//                        }
-//                    ]
-//                );
-//            }
-//        );
-
+        Route::settings($this->getId(), function () {
+            Route::get('setting', ['as' => 'manage.news_client.getSetting', 'uses' => 'ManagerController@getSetting']);
+            Route::post('setting', ['as' => 'manage.news_client.postSetting', 'uses' => 'ManagerController@postSetting']);
+        }, ['namespace' => __NAMESPACE__]);
     }
 
     /**
@@ -95,11 +70,11 @@ class Plugin extends AbstractPlugin
      *
      * @return boolean 플러그인의 설치 유무
      */
-    public function checkInstall($installedVersion = null)
+    public function checkInstalled($installedVersion = null)
     {
         // implement code
 
-        return parent::checkInstall($installedVersion);
+        return parent::checkInstalled($installedVersion);
     }
 
     /**
@@ -114,6 +89,17 @@ class Plugin extends AbstractPlugin
         // implement code
 
         parent::update($installedVersion);
+    }
+
+    /**
+     * 플러그인의 설정페이지 주소를 반환한다.
+     * 플러그인 목록에서 플러그인의 '관리' 버튼을 누를 경우 이 페이지에서 반환하는 주소로 연결된다.
+     *
+     * @return string
+     */
+    public function getSettingsURI()
+    {
+        return route('manage.news_client.getSetting');
     }
 
     public function getHandler()

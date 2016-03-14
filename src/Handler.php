@@ -26,13 +26,22 @@ class Handler
 
     public function getData()
     {
-        $agree = $this->configs->getVal($this->configKey . '.collectAgree');
-        if ($agree && !$this->cache->has($this->cacheKey)) {
+        if ($this->isAgree() && !$this->cache->has($this->cacheKey)) {
             $this->cache->put($this->cacheKey, true, $this->interval);
             $this->sendInformation();
         }
 
         return $this->getNewsData();
+    }
+
+    public function isAgree()
+    {
+        return $this->configs->getVal($this->configKey . '.collectAgree');
+    }
+
+    public function setAgree($bool = true)
+    {
+        $this->configs->setVal($this->configKey . '.collectAgree', $bool);
     }
 
     protected function sendInformation()
