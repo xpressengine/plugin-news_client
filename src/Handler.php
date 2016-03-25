@@ -11,7 +11,7 @@ class Handler
 
     protected $configs;
 
-    protected $url = 'http://newsxe.app/';
+    protected $url = 'http://news.xpressengine.io/';
 
     protected $cacheKey = 'news_client::report';
     protected $configKey = 'news_client';
@@ -26,7 +26,7 @@ class Handler
 
     public function getData()
     {
-        if ($this->isAgree() && !$this->cache->has($this->cacheKey)) {
+        if (!$this->cache->has($this->cacheKey)) {
             $this->cache->put($this->cacheKey, true, $this->interval);
             $this->sendInformation();
         }
@@ -34,15 +34,15 @@ class Handler
         return $this->getNewsData();
     }
 
-    public function isAgree()
-    {
-        return $this->configs->getVal($this->configKey . '.collectAgree');
-    }
-
-    public function setAgree($bool = true)
-    {
-        $this->configs->setVal($this->configKey . '.collectAgree', $bool);
-    }
+//    public function isAgree()
+//    {
+//        return $this->configs->getVal($this->configKey . '.collectAgree');
+//    }
+//
+//    public function setAgree($bool = true)
+//    {
+//        $this->configs->setVal($this->configKey . '.collectAgree', $bool);
+//    }
 
     protected function sendInformation()
     {

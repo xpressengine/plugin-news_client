@@ -8,6 +8,7 @@
         @if ($updatable)
             <div class="alert alert-info" role="alert">
                 <strong>최신 버전이 아닙니다.</strong>
+                <br />
                 최신버전: [{{ $latest->version }}]
                 현재버전: [{{ __XE_VERSION__ }}]
                 <a href="#" class="alert-link">최신버전 보러가기</a>

@@ -11,7 +11,7 @@ class ManagerController extends Controller
 
     public function __construct()
     {
-        XePresenter::setSettingsSkin('news_client');
+        XePresenter::setSettingsSkinTargetId('news_client');
         $this->handler = app('xe.plugin.news_client')->getHandler();
     }
 

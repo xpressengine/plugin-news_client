@@ -99,7 +99,7 @@ class Plugin extends AbstractPlugin
      */
     public function getSettingsURI()
     {
-        return route('manage.news_client.getSetting');
+//        return route('manage.news_client.getSetting');
     }
 
     public function getHandler()

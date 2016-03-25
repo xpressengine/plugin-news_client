@@ -21,7 +21,7 @@
   ],
   "extra": {
     "xpressengine": {
-      "title": "News_Client",
+      "title": "News Client",
       "icon": "myicon.png",
       "component": {
         "widget/news_client@news": {

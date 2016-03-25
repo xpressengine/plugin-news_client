@@ -58,7 +58,6 @@ class NewsWidget extends AbstractWidget
 
     protected function needUpdate(array $latest)
     {
-//        return true;
         return $latest['versionId'] > $this->versionId(__XE_VERSION__);
     }
 
