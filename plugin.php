@@ -10,6 +10,8 @@ use Xpressengine\Support\LaravelCache;
 
 class Plugin extends AbstractPlugin
 {
+    protected $handler;
+
     /**
      * 이 메소드는 활성화(activate) 된 플러그인이 부트될 때 항상 실행됩니다.
      *
@@ -99,11 +101,21 @@ class Plugin extends AbstractPlugin
      */
     public function getSettingsURI()
     {
-//        return route('manage.news_client.getSetting');
+        return route('manage.news_client.getSetting');
     }
 
     public function getHandler()
     {
-        return new Handler(new LaravelCache(app('cache.store')), app('xe.config'));
+        if (!$this->handler) {
+            $this->handler = new Handler(
+                new LaravelCache(app('cache.store')),
+                app('xe.config'),
+                app('xe.plugin'),
+                app('db'),
+                app('request')
+            );
+        }
+
+        return $this->handler;
     }
 }
