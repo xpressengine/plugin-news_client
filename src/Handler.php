@@ -22,7 +22,7 @@ class Handler
 
     protected $request;
 
-    protected $url = 'http://news.xpressengine.io/';
+    protected $domain = 'http://news.xpressengine.io';
 
     protected $cacheKey = 'news_client::report';
     protected $configKey = 'news_client';
@@ -48,6 +48,10 @@ class Handler
         if (!$this->cache->has($this->cacheKey)) {
             $this->cache->put($this->cacheKey, true, $this->interval);
             $this->sendCoreVersion();
+
+            if ($this->isAgree()) {
+                $this->sendInformation();
+            }
         }
 
         return $this->getNewsData();
@@ -57,7 +61,7 @@ class Handler
     {
         $client = $this->makeClient();
 
-        $response = $client->request('post', $this->url, [
+        $response = $client->request('post', $this->url('news'), [
             'headers' => [
                 'REQUESTURL' => $this->request->root()
             ],
@@ -76,9 +80,14 @@ class Handler
     protected function getNewsData()
     {
         $client = $this->makeClient();
-        $response = $client->request('get', $this->url);
+        $response = $client->request('get', $this->url('news'));
 
         return json_decode($response->getBody());
+    }
+
+    protected function url($page)
+    {
+        return rtrim($this->domain, '/') . '/' . $page;
     }
 
     protected function makeClient()
@@ -104,7 +113,7 @@ class Handler
 
         $client = $this->makeClient();
 
-        $response = $client->request('post', 'http://env.url'/* env url */, [
+        $response = $client->request('post', $this->url('envs'), [
             'headers' => [
                 'REQUESTURL' => $this->request->root()
             ],
@@ -150,7 +159,9 @@ class Handler
 
                 return $version[0] * 10000 + $version[1] * 100 + $version[2];
             }),
-            'extensions' => implode(',', get_loaded_extensions())
+            'extensions' => implode(',', array_map(function ($ext) {
+                return strtolower($ext);
+            }, get_loaded_extensions()))
         ];
     }
 
@@ -171,13 +182,12 @@ class Handler
         $collection = $this->plugins->getAllPlugins(true);
         /** @var PluginEntity $plugin */
         foreach ($collection as $plugin) {
-            $plugins[] = implode(':', [
-                $plugin->getId(),
-                $plugin->getInstalledVersion(),
-                $plugin->isActivated() ? 1 : 0
-            ]);
+            $plugins[$plugin->getId()] = [
+                'version' => $plugin->getInstalledVersion(),
+                'activated' => $plugin->isActivated()
+            ];
         }
 
-        return implode(',', $plugins);
+        return $plugins;
     }
 }
