@@ -95,6 +95,11 @@ class Handler
         return new Client();
     }
 
+    public function getConfig()
+    {
+        return $this->configs->get($this->configKey);
+    }
+
     public function isAgree()
     {
         return $this->configs->getVal($this->configKey . '.collectAgree');

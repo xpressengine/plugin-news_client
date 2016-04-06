@@ -4,7 +4,6 @@ namespace Xpressengine\Plugins\NewsClient;
 use Frontend;
 use Presenter;
 use Route;
-use Xpressengine\Http\Request;
 use Xpressengine\Plugin\AbstractPlugin;
 use Xpressengine\Support\LaravelCache;
 
@@ -47,9 +46,9 @@ class Plugin extends AbstractPlugin
      */
     public function activate($installedVersion = null)
     {
-        // implement code
-
-        parent::activate($installedVersion);
+        if (!$this->getHandler()->getConfig()) {
+            $this->getHandler()->setAgree(true);
+        }
     }
 
     /**
@@ -59,9 +58,7 @@ class Plugin extends AbstractPlugin
      */
     public function install()
     {
-        // implement code
-
-        parent::install();
+        //
     }
 
     /**
@@ -88,9 +85,7 @@ class Plugin extends AbstractPlugin
      */
     public function update($installedVersion = null)
     {
-        // implement code
-
-        parent::update($installedVersion);
+        //
     }
 
     /**
