@@ -47,7 +47,7 @@ class Plugin extends AbstractPlugin
     public function activate($installedVersion = null)
     {
         if (!$this->getHandler()->getConfig()) {
-            $this->getHandler()->setAgree(true);
+            $this->getHandler()->setAgree(false);
         }
     }
 
