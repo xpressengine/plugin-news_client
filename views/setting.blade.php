@@ -12,20 +12,21 @@
 
             <div class="form-group">
                 <div class="well">
-                    <h4>XE가 설치된 서버의 환경정보 일부를 디버깅 목적으로 수집하며, 이 과정에서 개인정보는 수집되지 않습니다.</h4>
+                    <h4>XE가 설치된 서버의 환경정보 일부가 XE 통계 수집 서버로 전송됩니다. 더 나은 SW를 제작하기 위한 목적으로 활용합니다. 익명으로 수집되며 이 정보를 외부에 공개하지 않습니다. </h4>
+                    <strong>이 항목에 동의하지 않아도 됩니다.</strong>
                     <br />
                     <br />
                     <strong>수집하는 항목:</strong><br />
                     * 서버 OS<br />
-                    * http software (apache, nginx)<br />
-                    * php version 및 extension 목록<br />
+                    * web software (apache, nginx)<br />
+                    * php version 및 extension<br />
                     * database 종류 및 버전<br />
                     * 설치된 플러그인 정보<br />
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="agree" value="true" @if($agree) checked @endif>
-                        <strong>시스템 환경정보 수집에 동의합니다.</strong>
+                        <strong>설치 환경 수집에 동의합니다.</strong>
                     </label>
                 </div>
             </div>
