@@ -48,7 +48,7 @@ class Handler
     {
         $client = $this->makeClient();
 
-        $response = $client->request('post', $this->url, [
+        $response = $client->request('post', $this->url . '/news', [
             'headers' => [
                 'REQUESTURL' => app('request')->root()
             ],
@@ -67,7 +67,7 @@ class Handler
     protected function getNewsData()
     {
         $client = $this->makeClient();
-        $response = $client->request('get', $this->url);
+        $response = $client->request('get', $this->url . '/news');
 
         return json_decode($response->getBody());
     }
