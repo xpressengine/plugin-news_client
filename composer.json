@@ -22,7 +22,7 @@
   "extra": {
     "xpressengine": {
       "title": "News Client",
-      "icon": "myicon.png",
+      "icon": "icon.png",
       "component": {
         "widget/news_client@news": {
           "class": "Xpressengine\\Plugins\\NewsClient\\NewsWidget",
