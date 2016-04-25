@@ -1,9 +1,9 @@
 @section('page_title')
-    <h2>환경정보 수집 동의 설정</h2>
+    <h2>{{ xe_trans('news_client::collectEnv.title') }}</h2>
 @endsection
 
 @section('page_description')
-    <small>PC 환경정보 수집 동의 설정 페이지입니다.</small>
+    <small>{{ xe_trans('news_client::collectEnv.description') }}</small>
 @stop
 
 <div class="row">
@@ -13,7 +13,7 @@
             <div class="panel">
                 <div class="panel-heading">
                     <div class="pull-left">
-                        <h3 class="panel-title">설치 환경정보 수집 동의</h3>
+                        <h3 class="panel-title">{{ xe_trans('news_client::collectEnv.subTitle') }}</h3>
                     </div>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
@@ -21,45 +21,45 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="panel-body">
                             <p class="text">
-                                XpressEngine은 이용자의 개인정보를 중요시하며, 정보통신망 이용촉진 및 정보보호 등에 관한 법률,<br>개인정보보호법 등 개인정보 보호 법령을 준수합니다.
+                                {!! xe_trans('news_client::collectEnv.compliance') !!}
                             </p>
                             <div class="form-group">
-                                <label>1. 수집하는 정보</label>
+                                <label>1. {{ xe_trans('news_client::collectEnv.collectItemStep') }}</label>
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="pull-left">
-                                            XE는 설치된 서버의 환경정보 일부를 XE 통계 수집 서버로 전송합니다.
+                                            {{ xe_trans('news_client::collectEnv.msgCollect') }}
                                         </div>
                                     </div>
                                     <div class="panel-body">
-                                        <label>수집하는 항목</label>
+                                        <label>{{ xe_trans('news_client::collectEnv.collectItem') }}</label>
                                         <ul class="normal-list">
-                                            <li>서버 OS</li>
-                                            <li>Web Software(apache, nginx)</li>
-                                            <li>PHP version 및 extension</li>
-                                            <li>Database 종류 및 version</li>
-                                            <li>설치된 Plugin 정보</li>
+                                            <li>{{ xe_trans('news_client::collectEnv.items.serverOS') }}</li>
+                                            <li>{{ xe_trans('news_client::collectEnv.items.webSoftware') }}</li>
+                                            <li>{{ xe_trans('news_client::collectEnv.items.PHPs') }}</li>
+                                            <li>{{ xe_trans('news_client::collectEnv.items.database') }}</li>
+                                            <li>{{ xe_trans('news_client::collectEnv.items.plugins') }}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>2. 수집한 정보의 이용</label>
+                                <label>2. {{ xe_trans('news_client::collectEnv.usedInfoStep') }}</label>
                                 <div class="list-group-item">
                                     <p class="text">
-                                        수집한 환경정보는 더 나은 소프트웨어를 제작하기 위한 목적으로 활용됩니다. <br>익명으로 수집되며 그 외의 목적으로 사용하거나 외부에 공개하지 않습니다.
+                                        {!! xe_trans('news_client::collectEnv.purposeAndPrivate') !!}
                                     </p>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>3. 환경정보 수집에 대한 동의 <small>(선택)</small></label>
+                                <label>3. {{ xe_trans('news_client::collectEnv.agreeStep') }} <small>({{ xe_trans('xe::select') }})</small></label>
                                 <div class="list-group-item">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="agree" value="true" @if($agree) checked @endif>
-                                            설치 환경정보 수집에 동의합니다.
+                                            {{ xe_trans('news_client::collectEnv.msgAgree') }}
                                         </label>
                                     </div>
                                 </div>
