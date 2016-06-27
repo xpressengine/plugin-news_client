@@ -39,12 +39,6 @@
       }
     }
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://packagist.xpressengine.io/"
-    }
-  ],
   "require": {
     "guzzlehttp/guzzle": "~6.1"
   },
