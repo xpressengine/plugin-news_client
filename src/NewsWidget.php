@@ -37,11 +37,9 @@ class NewsWidget extends AbstractWidget
     /**
      * render
      *
-     * @param array $args to render parameter array
-     *
      * @return mixed
      */
-    public function render(array $args)
+    public function render()
     {
         $data = $this->plugin->getHandler()->getData();
 
