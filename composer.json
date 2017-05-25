@@ -30,6 +30,12 @@
           "description": "대시보드용 위젯 입니다.",
           "screenshot" : []
         },
+        "widget/news_client@news/skin/news_client@default": {
+          "class": "Xpressengine\\Plugins\\NewsClient\\NewsWidgetSkin",
+          "name": "새소식 위젯 스킨",
+          "description": "대시보드용 위젯 스킨입니다.",
+          "screenshot" : []
+        },
         "news_client/settingsSkin/news_client@default": {
           "class": "Xpressengine\\Plugins\\NewsClient\\ManagerSkin",
           "name": "관리자 스킨",

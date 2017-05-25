@@ -1,9 +1,8 @@
 <?php
 namespace Xpressengine\Plugins\NewsClient;
 
-use Xpressengine\Widget\AbstractWidget;
-use View;
 use XeFrontend;
+use Xpressengine\Widget\AbstractWidget;
 
 class NewsWidget extends AbstractWidget
 {
@@ -47,11 +46,13 @@ class NewsWidget extends AbstractWidget
 
         XeFrontend::css($this->plugin->asset('assets/style.css'))->before('assets/settings/css/admin.css')->load();
 
-        return View::make('news_client::views.widget', [
-            'updatable' => $updatable,
-            'latest' => $data->version,
-            'news' => $data->news
-        ]);
+        return $this->renderSkin(
+            [
+                'updatable' => $updatable,
+                'latest' => $data->version,
+                'news' => $data->news
+            ]
+        );
     }
 
     protected function needUpdate(array $latest)
