@@ -9,18 +9,13 @@ class NewsWidget extends AbstractWidget
     protected static $id = 'widget/news_client@news';
 
     /**
-     * @var Handler
-     */
-    protected $plugin;
-
-    /**
      * init
      *
      * @return mixed
      */
     protected function init()
     {
-        $this->plugin = app('xe.plugin.news_client');
+        //
     }
 
     /**
@@ -30,7 +25,7 @@ class NewsWidget extends AbstractWidget
      */
     public function getCodeCreationForm()
     {
-        // TODO: Implement getCodeCreationForm() method.
+        //
     }
 
     /**
@@ -40,11 +35,11 @@ class NewsWidget extends AbstractWidget
      */
     public function render()
     {
-        $data = $this->plugin->getHandler()->getData();
+        $data = app('xe.news_client')->getData();
 
         $updatable = $this->needUpdate((array)$data->version);
 
-        XeFrontend::css($this->plugin->asset('assets/style.css'))->before('assets/settings/css/admin.css')->load();
+        XeFrontend::css('plugins/news_client/assets/style.css')->before('assets/settings/css/admin.css')->load();
 
         return $this->renderSkin(
             [

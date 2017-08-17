@@ -7,26 +7,23 @@ use Xpressengine\Http\Request;
 
 class ManagerController extends Controller
 {
-    protected $handler;
-
     public function __construct()
     {
         XePresenter::setSettingsSkinTargetId('news_client');
-        $this->handler = app('xe.plugin.news_client')->getHandler();
     }
 
     public function getSetting()
     {
         return XePresenter::make('setting', [
-            'agree' => $this->handler->isAgree()
+            'agree' => app('xe.news_client')->isAgree()
         ]);
     }
 
     public function postSetting(Request $request)
     {
-        $this->handler->setAgree($request->has('agree'));
+        app('xe.news_client')->setAgree($request->has('agree'));
 
-        return redirect()->route('manage.news_client.getSetting')
+        return redirect()->route('news_client::setting')
             ->with('alert', ['type' => 'success', 'message' => '저장되었습니다.']);
     }
 }
