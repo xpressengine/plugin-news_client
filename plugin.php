@@ -6,7 +6,6 @@ use Presenter;
 use Route;
 use XeLang;
 use Xpressengine\Plugin\AbstractPlugin;
-use Xpressengine\Support\LaravelCache;
 
 class Plugin extends AbstractPlugin
 {
@@ -33,7 +32,7 @@ class Plugin extends AbstractPlugin
         });
         app()->singleton(Handler::class, function ($app) {
             return new Handler(
-                new LaravelCache($app['cache.store']),
+                $app['cache.store'],
                 $app['xe.config'],
                 $app['xe.plugin'],
                 $app['db'],

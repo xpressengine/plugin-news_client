@@ -1,13 +1,13 @@
 <?php
 namespace Xpressengine\Plugins\NewsClient;
 
+use Illuminate\Contracts\Cache\Repository as CacheContract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use PDO;
 use Xpressengine\Config\ConfigManager;
 use Xpressengine\Plugin\PluginEntity;
 use Xpressengine\Plugin\PluginHandler;
-use Xpressengine\Support\CacheInterface;
 use GuzzleHttp\Client;
 
 class Handler
@@ -30,7 +30,7 @@ class Handler
     protected $interval = 60;   // minute
 
     public function __construct(
-        CacheInterface $cache,
+        CacheContract $cache,
         ConfigManager $configs,
         PluginHandler $plugins,
         DatabaseManager $db,
@@ -177,7 +177,7 @@ class Handler
 
         return [
             'driver' => $pdo->getAttribute(PDO::ATTR_DRIVER_NAME),
-            'version' => $pdo->getAttribute(\PDO::ATTR_SERVER_VERSION)
+            'version' => $pdo->getAttribute(PDO::ATTR_SERVER_VERSION)
         ];
     }
     
