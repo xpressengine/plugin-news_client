@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in">
-                    <form method="post" action="{{ route('manage.news_client.postSetting') }}">
+                    <form method="post" action="{{ route('news_client::setting') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="panel-body">
                             <p class="text">

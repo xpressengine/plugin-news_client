@@ -4,8 +4,8 @@ namespace Xpressengine\Plugins\NewsClient;
 use Frontend;
 use Presenter;
 use Route;
+use XeLang;
 use Xpressengine\Plugin\AbstractPlugin;
-use Xpressengine\Support\LaravelCache;
 
 class Plugin extends AbstractPlugin
 {
@@ -23,17 +23,32 @@ class Plugin extends AbstractPlugin
 
         $register = app('xe.pluginRegister');
         $register->add(NewsWidget::class);
+    }
 
+    public function register()
+    {
         app()->bind('xe.plugin.news_client', function () {
             return $this;
         });
+        app()->singleton(Handler::class, function ($app) {
+            return new Handler(
+                $app['cache.store'],
+                $app['xe.config'],
+                $app['xe.plugin'],
+                $app['db'],
+                $app['request']
+            );
+        });
+        app()->alias(Handler::class, 'xe.news_client');
     }
 
     protected function route()
     {
         Route::settings($this->getId(), function () {
-            Route::get('setting', ['as' => 'manage.news_client.getSetting', 'uses' => 'ManagerController@getSetting']);
-            Route::post('setting', ['as' => 'manage.news_client.postSetting', 'uses' => 'ManagerController@postSetting']);
+            Route::group(['prefix' => 'setting', 'as' => 'news_client::setting'], function () {
+                Route::get('/', 'ManagerController@getSetting');
+                Route::post('/', 'ManagerController@postSetting');
+            });
         }, ['namespace' => __NAMESPACE__]);
     }
 
@@ -49,43 +64,8 @@ class Plugin extends AbstractPlugin
         if (!$this->getHandler()->getConfig()) {
             $this->getHandler()->setAgree(false);
         }
-    }
 
-    /**
-     * 플러그인을 설치한다. 플러그인이 설치될 때 실행할 코드를 여기에 작성한다
-     *
-     * @return void
-     */
-    public function install()
-    {
-        //
-    }
-
-    /**
-     * 해당 플러그인이 설치된 상태라면 true, 설치되어있지 않다면 false를 반환한다.
-     * 이 메소드를 구현하지 않았다면 기본적으로 설치된 상태(true)를 반환한다.
-     *
-     * @param string $installedVersion 이 플러그인의 현재 설치된 버전정보
-     *
-     * @return boolean 플러그인의 설치 유무
-     */
-    public function checkInstalled($installedVersion = null)
-    {
-        // implement code
-
-        return parent::checkInstalled($installedVersion);
-    }
-
-    /**
-     * 플러그인을 업데이트한다.
-     *
-     * @param string|null $installedVersion 현재 XpressEngine에 설치된 플러그인의 버전정보
-     *
-     * @return void
-     */
-    public function update($installedVersion = null)
-    {
-        //
+        XeLang::putFromLangDataSource('news_client', base_path('plugins/news_client/langs/lang.php'));
     }
 
     /**
@@ -96,21 +76,11 @@ class Plugin extends AbstractPlugin
      */
     public function getSettingsURI()
     {
-        return route('manage.news_client.getSetting');
+        return route('news_client::setting');
     }
 
     public function getHandler()
     {
-        if (!$this->handler) {
-            $this->handler = new Handler(
-                new LaravelCache(app('cache.store')),
-                app('xe.config'),
-                app('xe.plugin'),
-                app('db'),
-                app('request')
-            );
-        }
-
-        return $this->handler;
+        return app(Handler::class);
     }
 }
