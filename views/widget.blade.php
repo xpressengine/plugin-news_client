@@ -11,7 +11,8 @@
                 <br />
                 최신버전: [{{ $latest->version }}]
                 현재버전: [{{ __XE_VERSION__ }}]
-                <a href="#" class="alert-link">최신버전 보러가기</a>
+                <br />
+                <a href="{{ route('settings.coreupdate.show') }}" class="alert-link">업데이트 하러가기</a>
             </div>
         @endif
         <table class="table">
