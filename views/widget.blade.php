@@ -18,8 +18,8 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Title</th>
-                <th class="text-right">CreatedAt</th>
+                <th>{{ xe_trans('xe::title') }}</th>
+                <th class="text-right">{{ xe_trans('xe::date.create') }}</th>
             </tr>
             </thead>
             <tbody>
