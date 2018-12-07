@@ -19,7 +19,7 @@
             <thead>
             <tr>
                 <th>{{ xe_trans('xe::title') }}</th>
-                <th class="text-right">{{ xe_trans('xe::date.create') }}</th>
+                <th class="text-right">{{ xe_trans('xe::createdAt') }}</th>
             </tr>
             </thead>
             <tbody>
