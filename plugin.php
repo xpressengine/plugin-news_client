@@ -1,4 +1,19 @@
 <?php
+/**
+ * Plugin.php
+ *
+ * This file is part of the Xpressengine package.
+ *
+ * PHP version 7
+ *
+ * @category    NewsClient
+ * @package     Xpressengine\Plugins\NewsClient
+ * @author      XE Developers <developers@xpressengine.com>
+ * @copyright   2015 Copyright (C) NAVER <http://www.navercorp.com>
+ * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html LGPL-2.1
+ * @link        http://www.xpressengine.com
+ */
+
 namespace Xpressengine\Plugins\NewsClient;
 
 use Frontend;
@@ -7,6 +22,16 @@ use Route;
 use XeLang;
 use Xpressengine\Plugin\AbstractPlugin;
 
+/**
+ * Plugin
+ *
+ * @category    NewsClient
+ * @package     Xpressengine\Plugins\NewsClient
+ * @author      XE Developers <developers@xpressengine.com>
+ * @copyright   2015 Copyright (C) NAVER <http://www.navercorp.com>
+ * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html LGPL-2.1
+ * @link        http://www.xpressengine.com
+ */
 class Plugin extends AbstractPlugin
 {
     protected $handler;
@@ -25,6 +50,11 @@ class Plugin extends AbstractPlugin
         $register->add(NewsWidget::class);
     }
 
+    /**
+     * register
+     *
+     * @return void
+     */
     public function register()
     {
         app()->bind('xe.plugin.news_client', function () {
@@ -42,6 +72,11 @@ class Plugin extends AbstractPlugin
         app()->alias(Handler::class, 'xe.news_client');
     }
 
+    /**
+     * register route
+     *
+     * @return void
+     */
     protected function route()
     {
         Route::settings($this->getId(), function () {
@@ -79,6 +114,11 @@ class Plugin extends AbstractPlugin
         return route('news_client::setting');
     }
 
+    /**
+     * get handler
+     *
+     * @return \Illuminate\Foundation\Application|mixed
+     */
     public function getHandler()
     {
         return app(Handler::class);
