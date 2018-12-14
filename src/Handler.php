@@ -1,4 +1,19 @@
 <?php
+/**
+ * Handler.php
+ *
+ * This file is part of the Xpressengine package.
+ *
+ * PHP version 7
+ *
+ * @category    NewsClient
+ * @package     Xpressengine\Plugins\NewsClient
+ * @author      XE Developers <developers@xpressengine.com>
+ * @copyright   2015 Copyright (C) NAVER <http://www.navercorp.com>
+ * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html LGPL-2.1
+ * @link        http://www.xpressengine.com
+ */
+
 namespace Xpressengine\Plugins\NewsClient;
 
 use Illuminate\Contracts\Cache\Repository as CacheContract;
@@ -10,6 +25,16 @@ use Xpressengine\Plugin\PluginEntity;
 use Xpressengine\Plugin\PluginHandler;
 use GuzzleHttp\Client;
 
+/**
+ * Handler
+ *
+ * @category    NewsClient
+ * @package     Xpressengine\Plugins\NewsClient
+ * @author      XE Developers <developers@xpressengine.com>
+ * @copyright   2015 Copyright (C) NAVER <http://www.navercorp.com>
+ * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html LGPL-2.1
+ * @link        http://www.xpressengine.com
+ */
 class Handler
 {
     protected $cache;
@@ -29,6 +54,15 @@ class Handler
 
     protected $interval = 60;   // minute
 
+    /**
+     * Handler constructor.
+     *
+     * @param CacheContract   $cache   cache contract
+     * @param ConfigManager   $configs config manager
+     * @param PluginHandler   $plugins plugin handler
+     * @param DatabaseManager $db      db manager
+     * @param Request         $request request
+     */
     public function __construct(
         CacheContract $cache,
         ConfigManager $configs,
@@ -43,6 +77,12 @@ class Handler
         $this->request = $request;
     }
 
+    /**
+     * get data
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getData()
     {
         if (!$this->cache->has($this->cacheKey)) {
@@ -57,6 +97,12 @@ class Handler
         return $this->getNewsData();
     }
 
+    /**
+     * send core version
+     *
+     * @return void
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     protected function sendCoreVersion()
     {
         $client = $this->makeClient();
@@ -77,6 +123,12 @@ class Handler
         }
     }
 
+    /**
+     * get news data
+     *
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     protected function getNewsData()
     {
         $client = $this->makeClient();
@@ -85,31 +137,66 @@ class Handler
         return json_decode($response->getBody());
     }
 
+    /**
+     * url
+     *
+     * @param string $page page
+     *
+     * @return string
+     */
     protected function url($page)
     {
         return rtrim($this->domain, '/') . '/' . $page;
     }
 
+    /**
+     * make client
+     *
+     * @return Client
+     */
     protected function makeClient()
     {
         return new Client();
     }
 
+    /**
+     * get config
+     *
+     * @return \Xpressengine\Config\ConfigEntity
+     */
     public function getConfig()
     {
         return $this->configs->get($this->configKey);
     }
 
+    /**
+     * check is agree
+     *
+     * @return mixed
+     */
     public function isAgree()
     {
         return $this->configs->getVal($this->configKey . '.collectAgree');
     }
 
+    /**
+     * set agree
+     *
+     * @param bool $bool set agree value
+     *
+     * @return void
+     */
     public function setAgree($bool = true)
     {
         $this->configs->setVal($this->configKey . '.collectAgree', $bool);
     }
 
+    /**
+     * send information
+     *
+     * @return void
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     protected function sendInformation()
     {
         $os = $this->getOS();
@@ -141,6 +228,11 @@ class Handler
         }
     }
 
+    /**
+     * get os
+     *
+     * @return array
+     */
     protected function getOS()
     {
         return [
@@ -150,11 +242,21 @@ class Handler
         ];
     }
 
+    /**
+     * get http
+     *
+     * @return array|string
+     */
     protected function getHttp()
     {
         return $this->request->server('SERVER_SOFTWARE');
     }
 
+    /**
+     * get php info
+     *
+     * @return array
+     */
     protected function getPHP()
     {
         return [
@@ -170,6 +272,11 @@ class Handler
         ];
     }
 
+    /**
+     * get db info
+     *
+     * @return array
+     */
     protected function getDB()
     {
         /** @var PDO $pdo */
@@ -180,7 +287,12 @@ class Handler
             'version' => $pdo->getAttribute(PDO::ATTR_SERVER_VERSION)
         ];
     }
-    
+
+    /**
+     * get plugin
+     *
+     * @return array
+     */
     protected function getPlugin()
     {
         $plugins = [];
