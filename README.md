@@ -9,7 +9,7 @@
 이 플러그인을 사용하여, 메인 페이지 또는 서브 페이지에 XE3의 새로운 소식을 나열할 수 있습니다.
 
 <p align="center"> 
-  <img src="https://raw.githubusercontent.com/xpressengine/plugin-news_client/develop/news_preview.PNG">
+  <img src="https://raw.githubusercontent.com/xpressengine/plugin-news_client/develop/news_preview.png">
  </p>
  
 
