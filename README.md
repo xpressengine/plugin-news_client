@@ -1,5 +1,5 @@
 <p align="center"> 
-  <img src="https://raw.githubusercontent.com/xpressengine/plugin-news-clinet/master/icon.png">
+  <img src="https://raw.githubusercontent.com/xpressengine/plugin-news_client/master/icon.png">
  </p>
 
 # XE3 News Widget Plugin
