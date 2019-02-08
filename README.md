@@ -1,13 +1,35 @@
+
 <p align="center"> 
   <img src="https://raw.githubusercontent.com/xpressengine/plugin-news_client/master/icon.png">
  </p>
 
-# XE3 News Widget Plugin
-이 어플리케이션은 Xpressengine3(이하 XE3)의 플러그인 입니다.
+# XE3 News Plugin
+이 플러그인은 Xpressengine3(이하 XE3)의 플러그인입니다.
 
-이 플러그인은 XE3에서 XE3 새로운 정보 제공 기능을 제공합니다.
+이 플러그인을 사용하여, 메인 페이지 또는 서브 페이지에 XE3의 새로운 소식을 나열할 수 있습니다.
 
-[![License](http://img.shields.io/badge/license-GNU%20LGPL-brightgreen.svg)]
+<p align="center"> 
+  <img src="https://raw.githubusercontent.com/xpressengine/plugin-news_client/develop/news_preview.PNG">
+ </p>
+ 
+
+
+
+
+## What can I do?
+
+본 플러그인을 통하여, XE3의 새로운 소식을 누구보다 빠르게 지켜볼 수 있습니다.
+
+
+## Installation specification
+* Minimum installation environment
+   XE3, PHP 7.0 or later
+* Recommended installation environment
+   XE3, PHP 7.1 or later
+
+## Caution
+본인 홈페이지의 새로운 글이 아닌, XE3의 공식 홈페이지 게시글 입니다.
+
 
 # Installation
 ### Console
@@ -30,4 +52,5 @@ $ php artisan plugin:install news_client
 Widget 페이지에 새소식 위젯을 추가해서 사용합니다.
 
 ## License
-이 플러그인은 LGPL라이선스 하에 있습니다. <https://opensource.org/licenses/LGPL-2.1>
+이 플러그인은 LGPL
+
