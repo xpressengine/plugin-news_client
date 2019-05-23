@@ -62,7 +62,7 @@ class NewsWidget extends AbstractWidget
 
         $updatable = $this->needUpdate((array)$data->version);
 
-        XeFrontend::css('plugins/news_client/assets/style.css')->before('assets/settings/css/admin.css')->load();
+        XeFrontend::css('plugins/news_client/assets/style.css')->before('assets/core/settings/css/admin.css')->load();
 
         return $this->renderSkin(
             [
