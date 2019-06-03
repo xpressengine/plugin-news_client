@@ -1,6 +1,6 @@
 {
   "name": "xpressengine-plugin/news_client",
-  "description": "This Package is Xpressengine Plugin - News_Client.",
+  "description": "공식홈페이지 공지사항을 보여주는 위젯 플러그인 입니다.",
   "keywords": [
     "xpressengine",
     "plugin"
@@ -9,13 +9,13 @@
   "version": "1.0.1",
   "type": "xpressengine-plugin",
   "support": {
-    "email": "email@email.com"
+    "email": "developers@xpressengine.com"
   },
   "authors": [
     {
       "name": "XE Team",
       "email": "developers@xpressengine.com",
-      "homepage": "http://xpressengine.io",
+      "homepage": "https://store.xehub.io/plugins/news_client",
       "role": "Developer"
     }
   ],
