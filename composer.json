@@ -6,14 +6,14 @@
     "plugin"
   ],
   "license": "LGPL",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "xpressengine-plugin",
   "support": {
     "email": "developers@xpressengine.com"
   },
   "authors": [
     {
-      "name": "XE Team",
+      "name": "XE Developers",
       "email": "developers@xpressengine.com",
       "homepage": "https://store.xehub.io/plugins/news_client",
       "role": "Developer"
@@ -46,6 +46,7 @@
     }
   },
   "require": {
+    "xpressengine/xpressengine": "~3.0.2",
     "guzzlehttp/guzzle": "~6.1"
   },
   "autoload": {
