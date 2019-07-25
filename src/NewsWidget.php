@@ -9,9 +9,9 @@
  * @category    NewsClient
  * @package     Xpressengine\Plugins\NewsClient
  * @author      XE Developers <developers@xpressengine.com>
- * @copyright   2015 Copyright (C) NAVER <http://www.navercorp.com>
- * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html LGPL-2.1
- * @link        http://www.xpressengine.com
+ * @copyright   2019 Copyright XEHub Corp. <https://www.xehub.io>
+ * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ * @link        https://xpressengine.io
  */
 
 namespace Xpressengine\Plugins\NewsClient;
@@ -25,9 +25,9 @@ use Xpressengine\Widget\AbstractWidget;
  * @category    NewsClient
  * @package     Xpressengine\Plugins\NewsClient
  * @author      XE Developers <developers@xpressengine.com>
- * @copyright   2015 Copyright (C) NAVER <http://www.navercorp.com>
- * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html LGPL-2.1
- * @link        http://www.xpressengine.com
+ * @copyright   2019 Copyright XEHub Corp. <https://www.xehub.io>
+ * @license     http://www.gnu.org/licenses/lgpl-3.0-standalone.html LGPL
+ * @link        https://xpressengine.io
  */
 class NewsWidget extends AbstractWidget
 {
