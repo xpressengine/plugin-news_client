@@ -60,28 +60,13 @@ class NewsWidget extends AbstractWidget
     {
         $data = app('xe.news_client')->getData();
 
-        $updatable = $this->needUpdate((array)$data->version);
-
         XeFrontend::css('plugins/news_client/assets/style.css')->before('assets/core/settings/css/admin.css')->load();
 
         return $this->renderSkin(
             [
-                'updatable' => $updatable,
                 'latest' => $data->version,
                 'news' => $data->news
             ]
         );
-    }
-
-    /**
-     * check need update
-     *
-     * @param array $latest latest
-     *
-     * @return bool
-     */
-    protected function needUpdate(array $latest)
-    {
-        return 1 === version_compare($latest['version'], __XE_VERSION__);
     }
 }

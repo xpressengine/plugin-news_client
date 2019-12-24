@@ -5,16 +5,6 @@
         <h3>News</h3>
     </div>
     <div class="panel-body">
-        @if ($updatable)
-            <div class="alert alert-info" role="alert">
-                <strong>최신 버전이 아닙니다.</strong>
-                <br />
-                최신버전: [{{ $latest->version }}]
-                현재버전: [{{ __XE_VERSION__ }}]
-                <br />
-                <a href="{{ route('settings.coreupdate.show') }}" class="alert-link">업데이트 하러가기</a>
-            </div>
-        @endif
         <table class="table">
             <thead>
             <tr>
